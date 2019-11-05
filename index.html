@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Realtime Data</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Bungee+Inline|Source+Sans+Pro"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Source Sans Pro", sans-serif;
+      }
+
+      h3 {
+        color: #272727;
+      }
+
+      h4 {
+        color: #4e4e4e;
+      }
+
+      .container {
+        text-align: center;
+        margin: 1% 40% 0 40%;
+      }
+
+      #message {
+        list-style-type: none;
+        margin: 0;
+        padding: 10px 0;
+      }
+
+      #message li {
+        padding: 10px 15px;
+        color: rgb(39, 39, 39);
+      }
+
+      #message li:nth-child(odd) {
+        background: rgb(173, 173, 173);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Realtime</h3>
+      <h4>Recieved Message</h4>
+      <ul id="message"></ul>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      (() => {
+        const socket = io();
+        socket.on("message", msg => {
+          console.log(msg);
+          const message = document.getElementById("message");
+          const li = document.createElement("li");
+          li.appendChild(document.createTextNode(msg));
+          message.appendChild(li);
+        });
+      })();
+    </script>
+  </body>
+</html>
