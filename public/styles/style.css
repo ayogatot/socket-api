@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+h3 {
+  color: #272727;
+}
+
+h4 {
+  color: #4e4e4e;
+}
+
+.container {
+  text-align: center;
+  margin: 1% 40% 0 40%;
+}
+
+#message {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0;
+}
+
+#message li {
+  padding: 10px 15px;
+}
+
+#message li:nth-child(odd) {
+  background: rgb(173, 173, 173);
+}
