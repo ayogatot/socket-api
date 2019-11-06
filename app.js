@@ -12,13 +12,19 @@ const { sendResponse } = require("./helpers/index");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+io.attach(http, {
+  pingInterval: 10000,
+  pingTimeout: 5000,
+  cookie: false
+});
+
 io.on("connection", socket => {
   socket.on("message", msg => {
     io.emit("message", msg);
   });
 });
 
-app.get("/", (req, res) => {
+app.get("/v1", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
