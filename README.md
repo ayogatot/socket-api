@@ -16,7 +16,7 @@ yarn
 
 you can access the endpoint here : `http://localhost:${PORT}`
 
-### /v1
+### /v1/display
 
 | Endpoint | HTTP | Description                   | Body |
 | -------- | ---- | ----------------------------- | ---- |
