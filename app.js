@@ -24,6 +24,31 @@ io.on("connection", socket => {
   });
 });
 
+app.get("/", (req, res) => {
+  const url = req.protocol + "://" + req.get("host") + req.originalUrl;
+  sendResponse(res, 200, false, null, {
+    display: [
+      {
+        url: url + "v1/display",
+        method: "GET",
+        body: null
+      }
+    ],
+    message: [
+      {
+        url: url + "v1/messages",
+        method: "GET",
+        body: null
+      },
+      {
+        url: url + "v1/messages",
+        method: "POST",
+        body: "message"
+      }
+    ]
+  });
+});
+
 app.get("/v1/display", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
